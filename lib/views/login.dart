@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:puskesmas_nganjuk2/models/model_pasien.dart';
+import 'package:puskesmas_nganjuk2/controllers/LoginController.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,13 +12,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool _obscure = true;
-
-  void _toglePass() {
-    setState(() {
-      _obscure = !_obscure;
-    });
-  }
+  final LoginController controller = new LoginController();
 
   var _formKey = GlobalKey<FormState>();
   TextEditingController tNowa = TextEditingController();
@@ -96,7 +90,7 @@ class _LoginState extends State<Login> {
               Container(
                 margin: EdgeInsets.only(top: 10),
                 child: TextFormField(
-                  obscureText: _obscure,
+                  obscureText: controller.getObscure,
                   style: TextStyle(fontSize: 14),
                   showCursor: false,
                   controller: tSandi,
@@ -115,10 +109,10 @@ class _LoginState extends State<Login> {
                     suffixIcon: GestureDetector(
                       onTap: () {
                         setState(() {
-                          _toglePass();
+                          controller.toglePass();
                         });
                       },
-                      child: _obscure
+                      child: controller.getObscure
                           ? const Icon(
                               Icons.visibility_off,
                             )
@@ -136,7 +130,7 @@ class _LoginState extends State<Login> {
                 child: ElevatedButton(
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        _btlogin(context);
+                        controller.btLogin(context, tNowa.text, tSandi.text);
                       }
                     },
                     style: ButtonStyle(
@@ -196,37 +190,5 @@ class _LoginState extends State<Login> {
         )),
       ),
     );
-  }
-
-  void _btlogin(BuildContext context) {
-    setState(() {
-      String nowa = tNowa.text;
-      String sandi = tSandi.text;
-      LoginPasien.loginPasien(nowa, sandi).then((value) {
-        if (value.kode == 1) {
-          Navigator.pushNamed(context, '/bottom_view');
-        } else {
-          showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                    title: Text(
-                      "Gagal Masuk",
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    content: Text(
-                      "Nomor atau kata sandi anda salah.",
-                      style: Theme.of(context).textTheme.displayMedium,
-                    ),
-                    actions: [
-                      TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: Text("OK"))
-                    ],
-                  ));
-        }
-      });
-    });
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:puskesmas_nganjuk2/pages/account.dart';
-import 'package:puskesmas_nganjuk2/pages/history.dart';
-import 'package:puskesmas_nganjuk2/pages/home.dart';
-import 'package:puskesmas_nganjuk2/pages/login.dart';
+import 'package:puskesmas_nganjuk2/views/account.dart';
+import 'package:puskesmas_nganjuk2/views/history.dart';
+import 'package:puskesmas_nganjuk2/views/home.dart';
+import 'package:puskesmas_nganjuk2/views/login.dart';
 
 class BottomViews extends StatefulWidget {
   const BottomViews({super.key});

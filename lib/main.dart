@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:puskesmas_nganjuk2/others/pcolor.dart';
-import 'package:puskesmas_nganjuk2/pages/bottom_view.dart';
-import 'package:puskesmas_nganjuk2/pages/home.dart';
-import 'package:puskesmas_nganjuk2/pages/login.dart';
-import 'package:puskesmas_nganjuk2/pages/queue_message.dart';
-import 'package:puskesmas_nganjuk2/pages/register.dart';
-import 'package:puskesmas_nganjuk2/pages/splashscreen.dart';
+import 'package:puskesmas_nganjuk2/helpers/pcolor.dart';
+import 'package:puskesmas_nganjuk2/views/bottom_view.dart';
+import 'package:puskesmas_nganjuk2/views/home.dart';
+import 'package:puskesmas_nganjuk2/views/login.dart';
+import 'package:puskesmas_nganjuk2/views/queue_message.dart';
+import 'package:puskesmas_nganjuk2/views/register.dart';
+import 'package:puskesmas_nganjuk2/views/splashscreen.dart';
 
 // void main() {
 //   runApp(const MyApp());

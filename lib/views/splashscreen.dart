@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:puskesmas_nganjuk2/pages/login.dart';
+import 'package:puskesmas_nganjuk2/views/login.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -15,8 +15,6 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     // TODO: implement initState
     Future.delayed(Duration(milliseconds: 3000), () {
-      // Navigator.pushReplacement(
-      //     context, MaterialPageRoute(builder: (context) => const Login()));
       Navigator.pushReplacementNamed(context, "/login");
     });
     super.initState();

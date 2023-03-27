@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:puskesmas_nganjuk2/widgets/AppbarWidget.dart';
+
+import '../helpers/colorThemes.dart';
 
 class QueuePage extends StatefulWidget {
   const QueuePage({super.key});
@@ -38,14 +41,12 @@ class _QueuePageState extends State<QueuePage> {
 
   @override
   Widget build(BuildContext context) {
+    final incolor = AppColors();
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Daftar Pelayanan",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.5),
-        ),
-        backgroundColor: Color(0xfff1f1f1),
-        automaticallyImplyLeading: true,
+      // appBar: AppbarWidget(headText: 'test'),
+      appBar: AppbarWidget(
+        context: context,
+        titleText: 'Daftar Pelayanan',
       ),
       body: Padding(
         padding: EdgeInsets.all(14),
@@ -159,20 +160,46 @@ class _QueuePageState extends State<QueuePage> {
                 ),
               ],
             ),
-            ElevatedButton(
-                onPressed: () async {
-                  final _date = await pickDate();
-                  if (_date == null) return;
-                  setState(() {
-                    _dateTime = _date;
-                  });
-                  // setState(() => _dateTime = _date);
-                },
-                child: Text(
-                  '${_dateTime.year}-${_dateTime.month}-${_dateTime.day}',
-                  // "${date.day}-${date.month}-${date.year}",
-                  style: Theme.of(context).textTheme.bodyLarge,
-                ))
+            Row(
+              children: [
+                Expanded(
+                  child: Directionality(
+                    textDirection: TextDirection.rtl,
+                    child: ElevatedButton.icon(
+                      onPressed: () async {
+                        final _date = await pickDate();
+                        if (_date == null) return;
+                        setState(() {
+                          _dateTime = _date;
+                        });
+                        // setState(() => _dateTime = _date);
+                      },
+                      icon: IconTheme(
+                        data: new IconThemeData(
+                          color: incolor.cprimary,
+                        ),
+                        child: Icon(Icons.calendar_month),
+                      ),
+                      label: Container(
+                          child: Row(children: [
+                        Expanded(
+                            child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  '${_dateTime.year}-${_dateTime.month}-${_dateTime.day}',
+                                  textAlign: TextAlign.start,
+                                  style: TextStyle(
+                                    color: incolor.cgrey,
+                                  ),
+                                ))),
+                      ])),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white),
+                    ),
+                  ),
+                )
+              ],
+            )
           ],
         )),
       ),
