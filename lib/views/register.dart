@@ -27,6 +27,10 @@ class _RegisterState extends State<Register> {
     var bodymedium = Theme.of(context).textTheme.bodySmall;
     var headmedium = Theme.of(context).textTheme.headlineMedium;
     var headlarge = Theme.of(context).textTheme.headlineLarge;
+    final heighMedia = MediaQuery.of(context).size.height;
+    final widthMedia = MediaQuery.of(context).size.width;
+    final int paddingMedia = 12;
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Daftar Pelayanan", style: headlarge),
@@ -36,12 +40,15 @@ class _RegisterState extends State<Register> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Container(
-              margin: EdgeInsets.all(14),
+              margin: EdgeInsets.symmetric(horizontal: 14),
               child: Column(
                 children: [
+                  //c1
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
+                    alignment: Alignment.center,
+                    height: heighMedia * 0.11,
                     child: TextFormField(
                       style: headmedium,
                       controller: tName,
@@ -55,8 +62,10 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                   ),
+                  //c2
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
+                    alignment: Alignment.center,
+                    height: heighMedia * 0.11,
                     child: TextFormField(
                       style: headmedium,
                       controller: tNik,
@@ -70,8 +79,10 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                   ),
+                  //c3
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
+                    alignment: Alignment.center,
+                    height: heighMedia * 0.11,
                     child: TextFormField(
                       style: headmedium,
                       controller: tNo,
@@ -85,8 +96,10 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                   ),
+                  //c4
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
+                    alignment: Alignment.center,
+                    height: heighMedia * 0.11,
                     child: TextFormField(
                       style: headmedium,
                       controller: tAlamat,
@@ -100,8 +113,10 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                   ),
+                  //c5
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
+                    alignment: Alignment.center,
+                    height: heighMedia * 0.11,
                     child: TextFormField(
                       style: headmedium,
                       controller: tSandi,
@@ -125,8 +140,10 @@ class _RegisterState extends State<Register> {
                           )),
                     ),
                   ),
+                  //c6
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
+                    alignment: Alignment.center,
+                    height: heighMedia * 0.11,
                     child: TextFormField(
                       style: headmedium,
                       controller: tKonfirm,
@@ -150,8 +167,10 @@ class _RegisterState extends State<Register> {
                           )),
                     ),
                   ),
+                  //c7
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 8),
+                    alignment: Alignment.center,
+                    height: heighMedia * 0.08,
                     child: CheckboxListTile(
                         title: Text(
                           "Dengan ini saya menyetujui Persyaratan pada aplikasi ini",
@@ -167,9 +186,10 @@ class _RegisterState extends State<Register> {
                           });
                         }),
                   ),
+                  //c8
                   Container(
-                    margin: EdgeInsets.only(top: 14),
                     alignment: Alignment.center,
+                    height: heighMedia * 0.13,
                     child: ElevatedButton(
                         onPressed: () {
                           setState(() {

@@ -42,7 +42,7 @@ class MenuWidget extends StatelessWidget {
                 ),
                 Expanded(
                     child: Container(
-                        margin: EdgeInsets.only(top: 8),
+                        alignment: Alignment.bottomCenter,
                         child: Text(
                           textButton,
                           textAlign: TextAlign.center,

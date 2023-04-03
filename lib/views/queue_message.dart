@@ -23,15 +23,6 @@ class _QueuePageState extends State<QueuePage> {
     super.initState();
   }
 
-  // void _showDatePicker() {
-  //   showDatePicker(
-  //     context: context,
-  //     initialDate: _dateTime,
-  //     firstDate: DateTime(2000),
-  //     lastDate: DateTime(2025),
-  //   );
-  // }
-
   Future<DateTime?> pickDate() => showDatePicker(
         context: context,
         initialDate: _dateTime,
@@ -41,6 +32,7 @@ class _QueuePageState extends State<QueuePage> {
 
   @override
   Widget build(BuildContext context) {
+    final heightMedia = MediaQuery.of(context).size.height;
     final incolor = AppColors();
     return Scaffold(
       // appBar: AppbarWidget(headText: 'test'),
@@ -49,160 +41,69 @@ class _QueuePageState extends State<QueuePage> {
         titleText: 'Daftar Pelayanan',
       ),
       body: Padding(
-        padding: EdgeInsets.all(14),
-        child: Center(
-            child: Column(
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 4,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                          padding: EdgeInsets.symmetric(vertical: 6),
-                          child: Text(
-                            'Nama Layanan',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 14.5),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(vertical: 6),
-                          child: Text(
-                            'Jumlah Kuota',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 14.5),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(vertical: 6),
-                          child: Text(
-                            'Kuota Tersisa',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 14.5),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(vertical: 6),
-                          child: Text(
-                            'Kuota Terisi',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 14.5),
-                          )),
-                      Padding(
-                          padding: EdgeInsets.symmetric(vertical: 6),
-                          child: Text(
-                            'Dokter',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(fontSize: 14.5),
-                          )),
-                    ],
-                  ),
+        padding: EdgeInsets.symmetric(horizontal: 12),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.symmetric(vertical: heightMedia * 0.025),
+                height: heightMedia * 0.3,
+                alignment: Alignment.center,
+                child: Image.asset(
+                  'assets/images/gbdokter.png',
+                  // height: 120,
                 ),
-                Expanded(
-                  flex: 6,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                          padding: EdgeInsets.only(top: 6, left: 20, bottom: 6),
-                          child: Text(
-                            'Pelayanan Gawat Darurat',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize: 14.5, fontWeight: FontWeight.w600),
-                          )),
-                      Container(
-                          padding: EdgeInsets.only(top: 6, left: 20, bottom: 6),
-                          child: Text(
-                            '32',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize: 14.5, fontWeight: FontWeight.w600),
-                          )),
-                      Container(
-                          padding: EdgeInsets.only(top: 6, left: 24, bottom: 6),
-                          child: Text(
-                            '20',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize: 14.5, fontWeight: FontWeight.w600),
-                          )),
-                      Container(
-                          padding: EdgeInsets.only(top: 6, left: 20, bottom: 6),
-                          child: Text(
-                            '12',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize: 14.5, fontWeight: FontWeight.w600),
-                          )),
-                      Container(
-                          padding: EdgeInsets.only(top: 6, left: 20, bottom: 6),
-                          child: Text(
-                            'Dr Ahmad lja sdlkjfdlask jflkadjs sdjl ',
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                                fontSize: 14.5, fontWeight: FontWeight.w600),
-                          )),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    child: ElevatedButton.icon(
-                      onPressed: () async {
-                        final _date = await pickDate();
-                        if (_date == null) return;
-                        setState(() {
-                          _dateTime = _date;
-                        });
-                        // setState(() => _dateTime = _date);
-                      },
-                      icon: IconTheme(
-                        data: new IconThemeData(
-                          color: incolor.cprimary,
-                        ),
-                        child: Icon(Icons.calendar_month),
-                      ),
-                      label: Container(
-                          child: Row(children: [
-                        Expanded(
-                            child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Text(
-                                  '${_dateTime.year}-${_dateTime.month}-${_dateTime.day}',
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                    color: incolor.cgrey,
-                                  ),
-                                ))),
-                      ])),
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white),
-                    ),
-                  ),
-                )
-              ],
-            )
-          ],
-        )),
+              ),
+              Container(
+                alignment: Alignment.bottomCenter,
+                // height: heightMedia * 0.53,
+                color: Colors.amber,
+                child: Text('test'),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
 }
+// Row(
+//               children: [
+//                 Expanded(
+//                   child: Directionality(
+//                     textDirection: TextDirection.rtl,
+//                     child: ElevatedButton.icon(
+//                       onPressed: () async {
+//                         final _date = await pickDate();
+//                         if (_date == null) return;
+//                         setState(() {
+//                           _dateTime = _date;
+//                         });
+//                         // setState(() => _dateTime = _date);
+//                       },
+//                       icon: IconTheme(
+//                         data: new IconThemeData(
+//                           color: incolor.cprimary,
+//                         ),
+//                         child: Icon(Icons.calendar_month),
+//                       ),
+//                       label: Container(
+//                           child: Row(children: [
+//                         Expanded(
+//                             child: Align(
+//                                 alignment: Alignment.centerLeft,
+//                                 child: Text(
+//                                   '${_dateTime.year}-${_dateTime.month}-${_dateTime.day}',
+//                                   textAlign: TextAlign.start,
+//                                   style: TextStyle(
+//                                     color: incolor.cgrey,
+//                                   ),
+//                                 ))),
+//                       ])),
+//                       style: ElevatedButton.styleFrom(
+//                           backgroundColor: Colors.white),
+//                     ),
+//                   ),
+//                 )
+//               ],
+//             )
